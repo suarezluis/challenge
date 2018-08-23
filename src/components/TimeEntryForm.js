@@ -1,31 +1,35 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import Task from './Task';
-import Billable from './Billable';
-import ProjectSelect from './ProjectSelect';
-import CategorySelect from './CategorySelect';
-import Timer from './Timer';
+import Task from "./Task";
+import Billable from "./Billable";
+import ProjectSelect from "./ProjectSelect";
+import CategorySelect from "./CategorySelect";
+import Timer from "./Timer";
 
 const defaultState = {
-  description: '',
-  selectedProject: '',
+  description: "",
+  selectedProject: "",
   selectedCategories: [],
   billable: false,
-  startTime: '',
-  endTime: '',
+  startTime: "",
+  endTime: ""
 };
 
 export default class TimeEntryForm extends Component {
   constructor(props) {
     super(props);
     this.state = defaultState;
-
+    this.setDescription = this.setDescription.bind(this);
     this.setBillable = this.setBillable.bind(this);
     this.setSelectedProject = this.setSelectedProject.bind(this);
     this.setSelectedCategories = this.setSelectedCategories.bind(this);
     this.setStartTime = this.setStartTime.bind(this);
     this.setEndTime = this.setEndTime.bind(this);
+  }
+
+  setDescription(description) {
+    this.setState({ description });
   }
 
   setBillable() {
@@ -35,7 +39,9 @@ export default class TimeEntryForm extends Component {
   setSelectedProject(updatedSelectedProject) {
     // react-select library turns selectedProject into an array if you remove a selectedProject
     // eslint-disable-next-line no-underscore-dangle
-    const selectedProject = Array.isArray(updatedSelectedProject) ? '' : updatedSelectedProject._id;
+    const selectedProject = Array.isArray(updatedSelectedProject)
+      ? ""
+      : updatedSelectedProject._id;
     this.setState({ selectedProject });
   }
 
@@ -58,7 +64,7 @@ export default class TimeEntryForm extends Component {
       description,
       selectedProject,
       startTime,
-      endTime,
+      endTime
     } = this.state;
     const { addTimeEntry } = this.props;
 
@@ -68,7 +74,7 @@ export default class TimeEntryForm extends Component {
       description,
       selectedProject,
       endTime,
-      startTime,
+      startTime
     });
 
     this.resetForm();
@@ -80,12 +86,15 @@ export default class TimeEntryForm extends Component {
 
   render() {
     const {
-      billable, selectedCategories, selectedProject, startTime,
+      billable,
+      selectedCategories,
+      selectedProject,
+      startTime
     } = this.state;
 
     return (
       <div className="mw100 center bg-white br3 h3 pa3 mv3 ba b--black-10 flex justify-between items-center">
-        <Task />
+        <Task setDescription={this.setDescription} />
 
         <ProjectSelect
           setSelectedProject={this.setSelectedProject}
@@ -110,5 +119,5 @@ export default class TimeEntryForm extends Component {
 }
 
 TimeEntryForm.propTypes = {
-  addTimeEntry: PropTypes.func.isRequired,
+  addTimeEntry: PropTypes.func.isRequired
 };

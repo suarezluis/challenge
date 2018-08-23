@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import TimerHistoryItem from './TimerHistoryItem';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import TimerHistoryItem from "./TimerHistoryItem";
 
 export default class TimerHistory extends Component {
   renderHistoryItem() {
@@ -8,7 +8,12 @@ export default class TimerHistory extends Component {
 
     return Object.entries(timeEntries).map(([id, entry]) => {
       const {
-        description, project, categories, billable, startTime, endTime,
+        description,
+        project,
+        categories,
+        billable,
+        startTime,
+        endTime
       } = entry;
       return (
         <TimerHistoryItem
@@ -30,5 +35,5 @@ export default class TimerHistory extends Component {
 }
 
 TimerHistory.propTypes = {
-  timeEntries: PropTypes.shape().isRequired,
+  timeEntries: PropTypes.shape().isRequired
 };
