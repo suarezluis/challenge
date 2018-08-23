@@ -12,7 +12,7 @@ This application is a loose clone of the application [Toggl](https://toggl.com).
   - All tests are passing.
   - This README has been updated to reflect any relevant changes (features only).
   
-## The Challenge
+## What is new?
 - Company log is now clickable and opens homepage in a new tab
 
 ### Time
