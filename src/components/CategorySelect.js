@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTag, faCheck } from '@fortawesome/free-solid-svg-icons';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTag, faCheck } from "@fortawesome/free-solid-svg-icons";
 
-import dummyCategories from '../../dummyData/categories';
+import dummyCategories from "../../dummyData/categories";
 
 class CategorySelect extends Component {
   constructor(props) {
     super(props);
     this.state = {
       allCategories: dummyCategories,
-      categoriesOpen: false,
+      categoriesOpen: false
     };
 
     this.handleCategorySelect = this.handleCategorySelect.bind(this);
@@ -19,7 +19,7 @@ class CategorySelect extends Component {
 
   toggleCategoriesList() {
     this.setState(prevState => ({
-      categoriesOpen: !prevState.categoriesOpen,
+      categoriesOpen: !prevState.categoriesOpen
     }));
   }
 
@@ -46,7 +46,7 @@ class CategorySelect extends Component {
           onClick={this.toggleCategoriesList}
         />
         {categoriesOpen ? (
-          <ul className="list absolute bg-white black-90 ba b--light-silver br3 pb3 pt3 ph0 ma4 z-999 w-auto minwidth-300 positionCategories">
+          <ul className="list absolute bg-white black-90 ba b--light-silver br3 pb3 pt3 ph0 ma4 z-999 w-auto minwidth-300 positionCategories cursorDefault">
             {allCategories.map(item => (
               <li
                 className="listItem ph0 pv2"
@@ -55,7 +55,9 @@ class CategorySelect extends Component {
                 role="presentation"
               >
                 <div className="ml3 dib w-10">
-                  {selectedCategories.includes(item.id) && <FontAwesomeIcon icon={faCheck} />}
+                  {selectedCategories.includes(item.id) && (
+                    <FontAwesomeIcon icon={faCheck} />
+                  )}
                 </div>
                 <div className="pa0 dib">{item.title}</div>
               </li>
@@ -71,9 +73,9 @@ export default CategorySelect;
 
 CategorySelect.propTypes = {
   selectedCategories: PropTypes.arrayOf(PropTypes.string),
-  setSelectedCategories: PropTypes.func.isRequired,
+  setSelectedCategories: PropTypes.func.isRequired
 };
 
 CategorySelect.defaultProps = {
-  selectedCategories: [],
+  selectedCategories: []
 };

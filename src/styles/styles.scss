@@ -1,21 +1,21 @@
-$font-stack: 'GT Walsheim Pro', sans-serif;
+$font-stack: "GT Walsheim Pro", sans-serif;
 $mooveItNavy: #0a0a36;
 $mooveItPink: #f27a82;
 $mooveItTeal: #12a8bd;
 
 @font-face {
-  font-family: 'GT Walsheim Pro';
+  font-family: "GT Walsheim Pro";
   font-weight: normal;
   font-style: normal;
-  src: url('https://s3-us-west-2.amazonaws.com/salestool-web/GT-Walsheim-Pro-Regular.eot');
-  src: url('https://s3-us-west-2.amazonaws.com/salestool-web/GT-Walsheim-Pro-Regular.eot?#iefix')
-      format('embedded-opentype'),
-    url('https://s3-us-west-2.amazonaws.com/salestool-web/GT-Walsheim-Pro-Regular.woff2')
-      format('woff2'),
-    url('https://s3-us-west-2.amazonaws.com/salestool-web/GT-Walsheim-Pro-Regular.woff')
-      format('font-woff'),
-    url('https://s3-us-west-2.amazonaws.com/salestool-web/GT-Walsheim-Pro-Regular.ttf')
-      format('truetype');
+  src: url("https://s3-us-west-2.amazonaws.com/salestool-web/GT-Walsheim-Pro-Regular.eot");
+  src: url("https://s3-us-west-2.amazonaws.com/salestool-web/GT-Walsheim-Pro-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://s3-us-west-2.amazonaws.com/salestool-web/GT-Walsheim-Pro-Regular.woff2")
+      format("woff2"),
+    url("https://s3-us-west-2.amazonaws.com/salestool-web/GT-Walsheim-Pro-Regular.woff")
+      format("font-woff"),
+    url("https://s3-us-west-2.amazonaws.com/salestool-web/GT-Walsheim-Pro-Regular.ttf")
+      format("truetype");
 }
 
 html {
@@ -94,4 +94,8 @@ html {
 
 .minwidth-300 {
   min-width: 300px;
+}
+
+.cursorDefault {
+  cursor: default;
 }
