@@ -12,6 +12,9 @@ This application is a loose clone of the application [Toggl](https://toggl.com).
   - All tests are passing.
   - This README has been updated to reflect any relevant changes (features only).
   
+## The Challenge
+- Company log is now clickable and opens homepage in a new tab
+
 ### Time
 
 We only expect candidates to spend about 8 hours on the challenge. Note that this does not mean that we expect you to _finish_ all issues in 8 hours. You should read through the issues and strategically select a few challenges that you think you can really nail in that time. Anything past that is bonus. It is better to be thorough with one or two issues than to half-complete all of them.
