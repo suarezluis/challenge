@@ -24,11 +24,6 @@ function Navbar() {
           src={logo}
           alt="Moove-it logo"
         />{" "}
-        <img
-          className="mooveItNavybg pt4 mt2 h1"
-          src={logo}
-          alt="Moove-it logo"
-        />
       </a>
 
       <div className="flex-grow pa2 flex items-center">
