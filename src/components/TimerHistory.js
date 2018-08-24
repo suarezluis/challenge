@@ -13,7 +13,8 @@ export default class TimerHistory extends Component {
         categories,
         billable,
         startTime,
-        endTime
+        endTime,
+        deleteTimeEntry
       } = entry;
       return (
         <TimerHistoryItem
@@ -25,6 +26,7 @@ export default class TimerHistory extends Component {
           billable={billable}
           startTime={startTime}
           endTime={endTime}
+          deleteTimeEntry={this.props.deleteTimeEntry}
         />
       );
     });

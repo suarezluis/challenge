@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
 import {
   displayDate,
   displayStartAndEndTimes,
@@ -14,7 +18,9 @@ export default class TimerHistoryItem extends Component {
       description,
       project,
       endTime,
-      startTime
+      startTime,
+      deleteTimeEntry,
+      id
     } = this.props;
 
     const isTimeOut = endTime !== 0;
@@ -38,6 +44,7 @@ export default class TimerHistoryItem extends Component {
         <div>{displayDate(startTime)}</div>
         <div>{displayStartAndEndTimes(startTime, endTime)}</div>
         <div>{displayTimeElapsed(startTime, endTime)}</div>
+        <FontAwesomeIcon icon={faTrash} onClick={() => deleteTimeEntry(id)} />
       </div>
     );
   }
