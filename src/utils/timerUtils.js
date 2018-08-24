@@ -1,6 +1,6 @@
-import uuid from 'uuid/v1';
+import uuid from "uuid/v1";
 
-const KEY_PREFIX = 'minutero:';
+const KEY_PREFIX = "minutero:";
 
 function setTimeEntry(id, value) {
   localStorage.setItem(id, JSON.stringify(value));
@@ -38,5 +38,40 @@ export function fetchTimeEntries() {
     allTimeEntries[id] = entry;
   }
 
-  return allTimeEntries;
+  //Create an array of entry objects
+  const arrayOfObjects = Object.values(allTimeEntries);
+  // sort new array by time in descending order
+  arrayOfObjects.sort(compareValues("startTime", "desc"));
+
+  // create a new object
+  const newObject = {};
+
+  //populate new object with keys and objects by looping through sorted array
+  for (let i = 0; i < arrayOfObjects.length; i++) {
+    let key = Object.keys(allTimeEntries)[i];
+    newObject[key] = arrayOfObjects[i];
+  }
+  //return new object that is sorted
+  return newObject;
+}
+
+// Helper function to aid in sorting an array of objects
+function compareValues(key, order = "asc") {
+  return function(a, b) {
+    if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+      // property doesn't exist on either object
+      return 0;
+    }
+
+    const varA = typeof a[key] === "string" ? a[key].toUpperCase() : a[key];
+    const varB = typeof b[key] === "string" ? b[key].toUpperCase() : b[key];
+
+    let comparison = 0;
+    if (varA > varB) {
+      comparison = 1;
+    } else if (varA < varB) {
+      comparison = -1;
+    }
+    return order == "desc" ? comparison * -1 : comparison;
+  };
 }
