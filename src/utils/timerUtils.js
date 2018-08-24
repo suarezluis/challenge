@@ -48,7 +48,10 @@ export function fetchTimeEntries() {
 
   //populate new object with keys and objects by looping through sorted array
   for (let i = 0; i < arrayOfObjects.length; i++) {
-    let key = Object.keys(allTimeEntries)[i];
+    //assigning same key to object
+    let key = Object.keys(allTimeEntries).find(
+      key => allTimeEntries[key] === arrayOfObjects[i]
+    );
     newObject[key] = arrayOfObjects[i];
   }
   //return new object that is sorted
