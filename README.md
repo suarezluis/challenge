@@ -15,6 +15,7 @@ This application is a loose clone of the application [Toggl](https://toggl.com).
 ## What is new?
 
 - Company log is now clickable and opens homepage in a new tab - Company log is now clickable and opens homepage in a new tab
+- Ability to delete entries by clicking a trash can at the end of each entry
 
 ### Time
 
