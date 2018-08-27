@@ -36,7 +36,7 @@ export default class TimerHistoryItem extends Component {
 
     return (
       <div className="black-50 f6 flex justify-between w100 center bg-white br0 pa3 pa3-ns mv3 ba b--black-10">
-        <div>{description || "DESCRIPTION PLACEHOLDER"}</div>
+        <div>{description || "UNNAMED ENTRY"}</div>
         <div>{project && project.name}</div>
         <div>{renderCategories}</div>
         <div>{billable && "$"}</div>
