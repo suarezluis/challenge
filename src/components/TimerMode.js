@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faSquare } from '@fortawesome/free-solid-svg-icons';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay, faSquare } from "@fortawesome/free-solid-svg-icons";
 
-import DocumentHead from './DocumentHead';
-import { createTimestamp, displayTimeElapsed } from '../utils/timeUtils';
+import DocumentHead from "./DocumentHead";
+import { createTimestamp, displayTimeElapsed } from "../utils/timeUtils";
 
 export default class TimerMode extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTime: '',
+      currentTime: ""
     };
 
     this.startTimer = this.startTimer.bind(this);
@@ -37,7 +37,7 @@ export default class TimerMode extends Component {
 
     handleTimerClick();
     clearInterval(this.timer);
-    this.setState({ currentTime: '' });
+    this.setState({ currentTime: "" });
   }
 
   render() {
@@ -64,5 +64,5 @@ export default class TimerMode extends Component {
 TimerMode.propTypes = {
   handleTimerClick: PropTypes.func.isRequired,
   isTiming: PropTypes.bool.isRequired,
-  startTime: PropTypes.string.isRequired,
+  startTime: PropTypes.string.isRequired
 };

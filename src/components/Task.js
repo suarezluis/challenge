@@ -10,6 +10,7 @@ export default class Task extends Component {
         className="input-reset ba b--black-20 pa2 mh3 db w-80"
         placeholder="Description"
         type="text"
+        value={this.props.description}
       />
     );
   }

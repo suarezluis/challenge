@@ -1,19 +1,19 @@
-import React, { Component, Fragment } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faUserClock } from '@fortawesome/free-solid-svg-icons';
-import PropTypes from 'prop-types';
+import React, { Component, Fragment } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faUserClock } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from "prop-types";
 
-import { createTimestamp } from '../utils/timeUtils';
+import { createTimestamp } from "../utils/timeUtils";
 
-import TimerMode from './TimerMode';
-import ManualMode from './ManualMode';
+import TimerMode from "./TimerMode";
+import ManualMode from "./ManualMode";
 
 export default class Timer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isTiming: false,
-      inTimerMode: true,
+      inTimerMode: true
     };
 
     this.handleManualSubmit = this.handleManualSubmit.bind(this);
@@ -83,5 +83,5 @@ export default class Timer extends Component {
 Timer.propTypes = {
   setStartTime: PropTypes.func.isRequired,
   setEndTime: PropTypes.func.isRequired,
-  startTime: PropTypes.string.isRequired,
+  startTime: PropTypes.string.isRequired
 };
