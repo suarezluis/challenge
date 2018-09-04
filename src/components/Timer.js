@@ -39,10 +39,11 @@ export default class Timer extends Component {
   }
 
   handleManualSubmit(startTime, endTime) {
-    const { setStartTime, setEndTime } = this.props;
+    const { setBothTimes } = this.props;
 
-    setStartTime(startTime);
-    setEndTime(endTime);
+    //setStartTime(startTime);
+    //setEndTime(endTime);
+    setBothTimes();
   }
 
   toggleTimerMode() {
@@ -86,5 +87,6 @@ export default class Timer extends Component {
 Timer.propTypes = {
   setStartTime: PropTypes.func.isRequired,
   setEndTime: PropTypes.func.isRequired,
-  startTime: PropTypes.string.isRequired
+  startTime: PropTypes.string,
+  setBothTimes: PropTypes.func.isRequired
 };

@@ -33,6 +33,7 @@ export default class TimeEntryForm extends Component {
     this.setSelectedCategories = this.setSelectedCategories.bind(this);
     this.setStartTime = this.setStartTime.bind(this);
     this.setEndTime = this.setEndTime.bind(this);
+    this.setBothTimes = this.setBothTimes.bind(this);
   }
 
   setDescription(description) {
@@ -62,6 +63,10 @@ export default class TimeEntryForm extends Component {
 
   setEndTime(endTime) {
     this.setState({ endTime }, () => this.saveTimeEntry());
+  }
+
+  setBothTimes(startTime, endTime) {
+    this.setState({ startTime, endTime }, () => this.saveTimeEntry());
   }
   saveIncompleteEntry() {
     const {
@@ -151,6 +156,7 @@ export default class TimeEntryForm extends Component {
           setEndTime={this.setEndTime}
           startTime={startTime}
           isIncompleteEntry={isIncompleteEntry}
+          setBothTimes={this.setBothTimes}
         />
       </div>
     );

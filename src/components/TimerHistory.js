@@ -7,7 +7,7 @@ import { removeIncompleteEntries } from "../utils/timerUtils";
 export default class TimerHistory extends Component {
   renderHistoryItem() {
     const { timeEntries } = this.props;
-    console.log(timeEntries);
+
     return Object.entries(timeEntries).map(([id, entry]) => {
       const {
         description,

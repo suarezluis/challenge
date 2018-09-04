@@ -55,8 +55,8 @@ TimerHistoryItem.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
   description: PropTypes.string.isRequired,
   project: PropTypes.shape({}),
-  endTime: PropTypes.string.isRequired,
-  startTime: PropTypes.string.isRequired
+  endTime: PropTypes.string,
+  startTime: PropTypes.string
 };
 
 TimerHistoryItem.defaultProps = {
