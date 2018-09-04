@@ -59,6 +59,12 @@ export default class TimerMode extends Component {
       </div>
     );
   }
+
+  componentDidMount() {
+    if (this.props.isIncompleteEntry) {
+      this.startTimer();
+    }
+  }
 }
 
 TimerMode.propTypes = {

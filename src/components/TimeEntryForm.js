@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
+import {
+  updateTimeEntry,
+  removeTimeEntry,
+  createTimeEntry,
+  removeIncompleteEntries
+} from "../utils/timerUtils";
+
 import Task from "./Task";
 import Billable from "./Billable";
 import ProjectSelect from "./ProjectSelect";
@@ -50,11 +57,30 @@ export default class TimeEntryForm extends Component {
   }
 
   setStartTime(startTime) {
-    this.setState({ startTime });
+    this.setState({ startTime }, () => this.saveIncompleteEntry());
   }
 
   setEndTime(endTime) {
     this.setState({ endTime }, () => this.saveTimeEntry());
+  }
+  saveIncompleteEntry() {
+    const {
+      billable,
+      selectedCategories,
+      description,
+      selectedProject,
+      startTime,
+      endTime
+    } = this.state;
+    const { addTimeEntry } = this.props;
+    createTimeEntry({
+      billable,
+      categories: selectedCategories,
+      description,
+      selectedProject,
+      endTime,
+      startTime
+    });
   }
 
   saveTimeEntry() {
@@ -68,15 +94,23 @@ export default class TimeEntryForm extends Component {
     } = this.state;
     const { addTimeEntry } = this.props;
 
-    addTimeEntry({
-      billable,
-      categories: selectedCategories,
-      description,
-      selectedProject,
-      endTime,
-      startTime
-    });
-
+    if (this.props.incompleteEntry) {
+      const { incompleteEntry } = this.props;
+      const id = Object.keys(incompleteEntry)[0];
+      updateTimeEntry(id, this.state);
+      this.props.removeIncompleteEntry();
+      this.props.retrieveTimeEntries();
+    } else {
+      addTimeEntry({
+        billable,
+        categories: selectedCategories,
+        description,
+        selectedProject,
+        endTime,
+        startTime
+      });
+      removeIncompleteEntries();
+    }
     this.resetForm();
   }
 
@@ -91,6 +125,7 @@ export default class TimeEntryForm extends Component {
       selectedProject,
       startTime
     } = this.state;
+    const isIncompleteEntry = !!this.props.incompleteEntry;
 
     return (
       <div className="mw100 center bg-white br3 h3 pa3 mv3 ba b--black-10 flex justify-between items-center">
@@ -115,9 +150,25 @@ export default class TimeEntryForm extends Component {
           setStartTime={this.setStartTime}
           setEndTime={this.setEndTime}
           startTime={startTime}
+          isIncompleteEntry={isIncompleteEntry}
         />
       </div>
     );
+  }
+
+  componentDidMount() {
+    if (this.props.incompleteEntry) {
+      const id = Object.keys(this.props.incompleteEntry)[0];
+      const incompleteEntry = this.props.incompleteEntry[id];
+
+      this.setState({
+        description: incompleteEntry.description,
+        selectedProject: incompleteEntry.selectedProject,
+        selectedCategories: incompleteEntry.selectedCategories,
+        billable: incompleteEntry.billable,
+        startTime: incompleteEntry.startTime
+      });
+    }
   }
 }
 

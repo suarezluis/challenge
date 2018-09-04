@@ -30,6 +30,7 @@ export function createTimeEntry(timeEntry) {
 
 export function fetchTimeEntries() {
   const allTimeEntries = {};
+
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < localStorage.length; i++) {
     const id = localStorage.key(i);
@@ -77,4 +78,25 @@ function compareValues(key, order = "asc") {
     }
     return order == "desc" ? comparison * -1 : comparison;
   };
+}
+
+export function extractIncompleteEntry() {
+  for (let i = 0; i < localStorage.length; i++) {
+    const id = localStorage.key(i);
+    if (!id.includes(KEY_PREFIX)) continue; // eslint-disable-line no-continue
+    const entry = getTimeEntry(id);
+    if (entry.endTime == "") return { [id]: entry };
+  }
+  return false;
+}
+
+export function removeIncompleteEntries() {
+  for (let i = 0; i < localStorage.length; i++) {
+    const id = localStorage.key(i);
+    if (!id.includes(KEY_PREFIX)) continue; // eslint-disable-line no-continue
+    const entry = getTimeEntry(id);
+    if (entry.endTime == "") {
+      removeTimeEntry(id);
+    }
+  }
 }
