@@ -6,3 +6,5 @@ dist
 .env
 .prod.env
 .vscode/
+yarn.lock
+yarn-error.log
