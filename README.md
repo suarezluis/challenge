@@ -19,6 +19,7 @@ This application is a loose clone of the application [Toggl](https://toggl.com).
 - Time entries are now sorted newest to oldest by start time
 - Description field clears after new and entry
 - Entries without a description appear as "UNNAMED ENTRY" instead of "ENTRY PLACEHOLDER"
+- Added Refresh feature, starting time for an entry will survive a refresh or window closing.
 
 ### Time
 
